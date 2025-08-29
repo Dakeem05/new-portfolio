@@ -177,7 +177,7 @@ const Portfolio = () => {
                 {/* Profile Image Container */}
                 <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-white/20 backdrop-blur-sm group-hover:scale-105 transition-transform duration-500">
                   <img 
-                    src="/profile.png" 
+                    src="/profile.webp" 
                     alt="Edidiong Samuel" 
                     className="w-full h-full object-cover"
                   />
@@ -236,7 +236,7 @@ const Portfolio = () => {
                   Download CV
                 </button>
                 <a
-                  href="mailto:edidiongsamuel14@gmail.com"
+                  href="#contact"
                   className={`flex items-center gap-2 px-8 py-4 border-2 rounded-full font-semibold transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 ${darkMode ? 'border-purple-500 text-purple-400 hover:bg-purple-500/10' : 'border-purple-500 text-purple-600 hover:bg-purple-50'}`}
                 >
                   <Mail className="w-5 h-5" />
