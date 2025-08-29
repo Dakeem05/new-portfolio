@@ -35,7 +35,7 @@ const Portfolio = () => {
   };
 
   const downloadCV = () => {
-    const cvUrl = "/src/assets/Edidiong_Samuel_Resume.pdf";  
+    const cvUrl = "/Edidiong_Samuel_Resume.pdf";  
   
     const link = document.createElement("a");
     link.href = cvUrl;
@@ -177,7 +177,7 @@ const Portfolio = () => {
                 {/* Profile Image Container */}
                 <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-white/20 backdrop-blur-sm group-hover:scale-105 transition-transform duration-500">
                   <img 
-                    src="/src/assets/dp.png" 
+                    src="/dp.png" 
                     alt="Edidiong Samuel" 
                     className="w-full h-full object-cover"
                   />
@@ -235,7 +235,6 @@ const Portfolio = () => {
                   <Download className="w-5 h-5" />
                   Download CV
                 </button>
-                a
                 <a
                   href="mailto:edidiongsamuel14@gmail.com"
                   className={`flex items-center gap-2 px-8 py-4 border-2 rounded-full font-semibold transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 ${darkMode ? 'border-purple-500 text-purple-400 hover:bg-purple-500/10' : 'border-purple-500 text-purple-600 hover:bg-purple-50'}`}
@@ -271,7 +270,7 @@ const Portfolio = () => {
                 <div className="relative w-64 h-80 rounded-2xl overflow-hidden border-2 border-white/20 backdrop-blur-sm group-hover:scale-105 transition-all duration-500 shadow-2xl">
                   
                   <img 
-                    src="/src/assets/profile.png" 
+                    src="/profile.png" 
                     alt="Edidiong Samuel" 
                     className="w-full h-full object-cover"
                   />
