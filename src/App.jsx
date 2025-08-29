@@ -259,7 +259,8 @@ const Portfolio = () => {
             </h2>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-12 items-center">
+          <div className=" items-center">
+          {/* <div className="grid lg:grid-cols-3 gap-12 items-center"> */}
             {/* Personal Photo Section */}
             {/* <div className="flex justify-center">
               <div className="relative group">
