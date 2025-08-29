@@ -161,7 +161,7 @@ const Portfolio = () => {
           <div className={`absolute top-1/2 left-1/2 w-64 h-64 rounded-full opacity-10 blur-2xl animate-bounce ${darkMode ? 'bg-cyan-500' : 'bg-cyan-300'}`}></div>
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <div className="relative z-10 max-w-6xl mx-auto pt-[5rem] lg:pt-0 px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Profile Image Section */}
             <div className="flex justify-center lg:justify-end order-1">
@@ -177,7 +177,7 @@ const Portfolio = () => {
                 {/* Profile Image Container */}
                 <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-white/20 backdrop-blur-sm group-hover:scale-105 transition-transform duration-500">
                   <img 
-                    src="/dp.png" 
+                    src="/profile.png" 
                     alt="Edidiong Samuel" 
                     className="w-full h-full object-cover"
                   />
@@ -261,12 +261,12 @@ const Portfolio = () => {
 
           <div className="grid lg:grid-cols-3 gap-12 items-center">
             {/* Personal Photo Section */}
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <div className="relative group">
-                {/* Glowing background effect */}
+                Glowing background effect
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 via-blue-500/30 to-pink-500/30 rounded-2xl blur-xl animate-pulse"></div>
                 
-                {/* Photo container */}
+                Photo container
                 <div className="relative w-64 h-80 rounded-2xl overflow-hidden border-2 border-white/20 backdrop-blur-sm group-hover:scale-105 transition-all duration-500 shadow-2xl">
                   
                   <img 
@@ -276,11 +276,11 @@ const Portfolio = () => {
                   />
                 </div>
 
-                {/* Decorative elements */}
+                Decorative elements
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-bounce"></div>
                 <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-bounce delay-500"></div>
               </div>
-            </div>
+            </div> */}
 
             {/* About Content */}
             <div className="lg:col-span-2">
