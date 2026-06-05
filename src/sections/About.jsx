@@ -78,13 +78,13 @@ export default function About() {
             </div>
 
             <div className="about__links" data-reveal>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="about__link">
+              <a href="https://github.com/dakeem05" target="_blank" rel="noreferrer" className="about__link">
                 GitHub
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                   <path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
                 </svg>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="about__link">
+              <a href="https://www.linkedin.com/in/edidiong-samuel-ng" target="_blank" rel="noreferrer" className="about__link">
                 LinkedIn
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                   <path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
