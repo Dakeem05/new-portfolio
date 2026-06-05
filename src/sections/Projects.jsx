@@ -134,7 +134,7 @@ export default function Projects() {
                   <span className="project-card__category">{p.category}</span>
                   {p.featured && <span className="project-card__featured">Featured</span>}
                 </div>
-                <a href={p.link} className="project-card__arrow" aria-label="View project">
+                <a href={p.link} target="_blank" className="project-card__arrow" aria-label="View project">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M3 13L13 3M13 3H5M13 3v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
