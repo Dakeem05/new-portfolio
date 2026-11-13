@@ -82,6 +82,12 @@ export default function About() {
                   <path d="M2 10 10 2M10 2H4M10 2v6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
                 </svg>
               </a>
+              <a href="https://gdg.community.dev/gdg-on-campus-university-of-uyo-uyo-nigeria/" target="_blank" rel="noreferrer" className="about__link">
+                GDGOC
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M2 10 10 2M10 2H4M10 2v6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                </svg>
+              </a>
               <a href="mailto:edidiongsamuel14@gmail.com" className="about__link">
                 Email
                 <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">

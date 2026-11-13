@@ -49,6 +49,10 @@ const roles = [
     title: 'Lead, GDGOC',
     org: 'Google Developer Groups on Campus · University of Uyo',
     text: 'Grew a dormant ~500-member chapter to 900+ members. Built three recurring programs, a partner pipeline, and the operating system behind a two-day flagship event.',
+    link: {
+      label: 'gdg.community.dev',
+      href: 'https://gdg.community.dev/gdg-on-campus-university-of-uyo-uyo-nigeria/',
+    },
   },
   {
     period: '2026 — Present',
@@ -108,6 +112,17 @@ export default function Community() {
                 <span>Hackathon design</span>
                 <span>Developer education</span>
               </div>
+              <a
+                className="community__feature-link"
+                href="https://techignite.net"
+                target="_blank"
+                rel="noreferrer"
+              >
+                techignite.net
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M2 10 10 2M10 2H4M10 2v6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                </svg>
+              </a>
             </div>
 
             <div className="community__feature-stats">
@@ -158,6 +173,19 @@ export default function Community() {
                   <h4 className="community__role-title">{r.title}</h4>
                   <p className="community__role-org">{r.org}</p>
                   <p className="community__role-text">{r.text}</p>
+                  {r.link && (
+                    <a
+                      className="community__role-link"
+                      href={r.link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {r.link.label}
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M2 10 10 2M10 2H4M10 2v6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                      </svg>
+                    </a>
+                  )}
                 </article>
               ))}
             </div>
