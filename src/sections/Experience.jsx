@@ -1,152 +1,149 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
+import useReveal from '../hooks/useReveal'
+import SectionHead from '../components/SectionHead'
 import './Experience.css'
 
-const experiences = [
+const mainRoles = [
+  {
+    role: 'Freelance Full-Stack Developer',
+    company: 'Independent',
+    location: 'Remote',
+    period: 'Jan 2026 — Present',
+    desc: 'Designed and shipped a multi-currency commerce platform end to end — React storefront, React admin panel and Laravel REST API — with eight currencies through Kora and automated cPanel releases.',
+    tech: 'Laravel · React · MySQL · Kora · GitHub Actions',
+  },
   {
     role: 'Backend Engineer (Laravel API)',
     company: 'ShopittPlus',
     location: 'Uyo, Nigeria',
     period: 'Sep 2025 — Dec 2025',
-    type: 'Contract',
-    desc: 'Architected and scaled the core backend API for a multi-vendor food/tech marketplace, enabling vendor account management, order processing, and real-time delivery tracking. Leveraged AI-powered automation workflows to streamline vendor onboarding, lead generation, and customer nurturing sequences.',
-    highlights: ['Laravel RESTful API', 'MySQL + Redis', 'Paystack integration', 'AI automation via n8n'],
+    desc: 'Architected the marketplace API: vendor onboarding, inventory, order lifecycle, delivery tracking and peer-to-peer transactions. Cut response times with MySQL indexing, Redis caching and an event-driven order pipeline.',
+    tech: 'Laravel · MySQL · Redis · Paystack · n8n',
+  },
+  {
+    role: 'Backend & Blockchain Engineer (NestJS)',
+    company: 'Espay',
+    location: 'Lagos, Nigeria',
+    period: 'Mar 2025 — Nov 2025',
+    desc: 'Sole engineer on a peer-to-peer crypto exchange for Espees on the Toronet blockchain — architecture, backend, blockchain integration, database design and production troubleshooting. Built the NestJS sync service with idempotency guards.',
+    tech: 'NestJS · TypeScript · Node.js · React · PostgreSQL · Toronet',
   },
   {
     role: 'Backend Engineer (Laravel API)',
     company: 'TransactX',
     location: 'Lagos, Nigeria',
     period: 'Apr 2025 — Sep 2025',
-    type: 'Contract',
-    desc: 'Developed and scaled a core banking API serving 50,000+ users with 99.9% reliability. Engineered PSD2-compliant integrations, P2P transfers, bill payments, and airtime purchases. Reduced API response times by 40% via Redis caching and query optimisation, handling 15,000+ daily transactions.',
-    highlights: ['40% API response time reduction', '50k+ users, 99.9% uptime', 'n8n workflow automation', 'Laravel Cloud + CI/CD'],
+    desc: 'Built and scaled the core banking API to 50,000+ users at 99.9% reliability, with PSD2-compliant integrations, fraud detection and settlement reconciliation. Reduced response times by 40% and sustained 15,000+ daily transactions.',
+    tech: 'Laravel · MySQL · Redis · JWT / OAuth2 · n8n · Laravel Cloud',
   },
   {
     role: 'Senior Full-Stack Developer',
     company: 'Tekinni',
     location: 'Remote',
     period: 'Jan 2025 — Mar 2025',
-    type: 'Contract',
-    desc: 'Architected a high-performance eCommerce backend with Laravel and a dynamic Vue.js/TypeScript frontend using Inertia.js. Drove a 30% increase in mobile conversions and cut deployment downtime by 50% with GitHub CI/CD automation.',
-    highlights: ['Laravel + Vue.js + Inertia.js', '30% mobile conversion lift', 'GitHub Actions CI/CD', 'Multi-vendor support'],
+    desc: 'Architected the Laravel commerce backend and built the Vue.js / TypeScript / Inertia.js frontend, contributing to a 30% lift in mobile conversions and halving deployment downtime with GitHub Actions.',
+    tech: 'Laravel · MySQL · Vue.js · Inertia.js · TypeScript · Tailwind',
   },
+  {
+    role: 'Backend Engineer (NestJS)',
+    company: 'Kachim',
+    location: 'Lagos, Nigeria',
+    period: 'Oct 2024 — Dec 2024',
+    desc: 'Built the backend for an EdTech platform: authentication, OTP verification, account lifecycle and four subscription tiers with Flutterwave payments.',
+    tech: 'NestJS · TypeScript · PostgreSQL · Flutterwave',
+  },
+]
+
+const earlierRoles = [
   {
     role: 'Blockchain Engineer',
     company: 'VestPad',
     location: 'Remote',
     period: 'Aug 2024 — Dec 2024',
-    type: 'Contract',
-    desc: 'Designed and deployed a decentralised launchpad using Solidity for tokenised crowdfunding. Built custom subgraphs with The Graph for real-time analytics, and architected a Node.js backend with Web3.js for on-chain/off-chain data pipelines.',
-    highlights: ['Solidity smart contracts', 'The Graph subgraphs', 'Web3.js + Node.js', 'PostgreSQL'],
-  },
-  {
-    role: 'Software Engineer',
-    company: 'Swap2Naira',
-    location: 'London, UK',
-    period: 'Jun 2024 — Dec 2024',
-    type: 'Contract',
-    desc: 'Architected and developed the platform backend using Laravel, handling up to 20,000 daily transactions at 99.9% uptime. Built a responsive React/TypeScript frontend that increased mobile usage by 30%, with cPanel-integrated CI/CD pipelines cutting downtime by 50%.',
-    highlights: ['Laravel + React/TypeScript', '20k daily transactions', '30% mobile usage increase', 'cPanel CI/CD'],
+    desc: 'Designed a decentralized launchpad in Solidity and built The Graph subgraphs plus a Node.js / Web3.js pipeline for on-chain data.',
+    tech: 'Solidity · The Graph · Web3.js · Node.js',
   },
   {
     role: 'Software Engineer',
     company: 'Foodpreneurshub',
     location: 'Ontario, Canada',
     period: 'Aug 2024 — Oct 2024',
-    type: 'Contract',
-    desc: 'Refactored the existing Laravel backend to resolve critical production issues, implemented GitHub Actions for automated cPanel deployments (40% faster), and enhanced the admin panel for blog and content management.',
-    highlights: ['Laravel refactor', 'GitHub Actions CI/CD', '40% faster deployments', 'Admin panel enhancements'],
+    desc: 'Refactored a production Laravel backend and introduced GitHub Actions deployments to cPanel, cutting release time by 40%.',
+    tech: 'Laravel · GitHub Actions · cPanel',
   },
   {
     role: 'Software Engineer',
-    company: 'Fabricspa',
-    location: 'Lagos, Nigeria',
-    period: 'Oct 2022 — Dec 2022',
-    type: 'Contract',
-    desc: 'Built the laundry management platform from scratch using Laravel and Vue.js, including a real-time order tracking system, secure payment gateway integration, and automated invoicing that reduced payment errors by 20%.',
-    highlights: ['Laravel + Vue.js', 'Real-time order tracking', 'Payment gateway', '20% error reduction'],
+    company: 'Swap2Naira',
+    location: 'London, UK',
+    period: 'Jun 2024 — Aug 2024',
+    desc: 'Architected the Laravel backend for a naira/crypto swap platform handling 20,000 daily transactions, and built the React/TypeScript frontend.',
+    tech: 'Laravel · React · TypeScript · MySQL',
   },
   {
     role: 'Backend (PHP) Tutor',
     company: 'The Roothub',
     location: 'Akwa Ibom, Nigeria',
     period: 'May 2023 — Aug 2023',
-    type: 'Teaching',
-    desc: 'Delivered in-depth training on PHP and backend development, designed hands-on CRUD and API projects, and mentored aspiring developers in coding best practices, debugging, and MySQL database management.',
-    highlights: ['PHP & backend training', 'API development workshops', 'MySQL mentorship'],
+    desc: 'Taught PHP, API development and MySQL to cohorts of new developers; designed hands-on CRUD and API projects.',
+    tech: 'PHP · MySQL · API design · Mentorship',
   },
   {
-    role: 'Organizer',
-    company: 'GDGoC — University of Uyo',
-    location: 'Uyo, Nigeria',
-    period: '2025 — Present',
-    type: 'Community',
-    desc: 'Organizer the Google Developer Group on Campus at Uniuyo. Organise developer events, bootcamps, hackathons, coding competitions, and build days to grow the local tech community and support the community.',
-    highlights: ['Developer bootcamps', 'Hackathons & build days', 'Community leadership', '"She Builds" event'],
+    role: 'Software Engineer',
+    company: 'Fabricspa',
+    location: 'Lagos, Nigeria',
+    period: 'Oct 2022 — Dec 2022',
+    desc: 'Built a laundry management platform from scratch in Laravel and Vue.js, with real-time tracking and automated invoicing.',
+    tech: 'Laravel · Vue.js · MySQL',
   },
 ]
 
+function Role({ item, index }) {
+  return (
+    <article className="xp__row" data-reveal style={{ '--i': index }}>
+      <div className="xp__period">{item.period}</div>
+      <div className="xp__body">
+        <div className="xp__head">
+          <h3 className="xp__role">{item.role}</h3>
+          <span className="xp__company">{item.company}</span>
+        </div>
+        <span className="xp__location">{item.location}</span>
+        <p className="xp__desc">{item.desc}</p>
+        <span className="xp__tech">{item.tech}</span>
+      </div>
+    </article>
+  )
+}
+
 export default function Experience() {
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const items = ref.current?.querySelectorAll('[data-reveal]')
-    if (!items) return
-    const observer = new IntersectionObserver(
-      entries => entries.forEach((e, i) => {
-        if (e.isIntersecting) setTimeout(() => e.target.classList.add('revealed'), i * 50)
-      }),
-      { threshold: 0.05 }
-    )
-    items.forEach(item => observer.observe(item))
-    return () => observer.disconnect()
-  }, [])
-
-  const typeColors = {
-    'Contract': '#3b82f6',
-    'Teaching': '#f59e0b',
-    'Community': '#10b981',
-  }
+  const ref = useReveal()
 
   return (
     <section className="section experience" id="experience" ref={ref}>
       <div className="container">
-        <div className="divider" data-reveal />
+        <SectionHead
+          index="06"
+          label="Experience"
+          title={<>Four years in <em>production</em>.</>}
+          note="Engineering roles across fintech, commerce and Web3 — with the outcomes attached."
+        />
 
-        <div className="experience__header" data-reveal>
-          <p className="section-label">Experience</p>
-          <h2 className="section-title">Where I've worked.</h2>
+        <div className="xp__list">
+          {mainRoles.map((item, i) => (
+            <Role item={item} index={i} key={item.company + item.role} />
+          ))}
         </div>
 
-        <div className="experience__list">
-          {experiences.map((exp) => (
-            <div key={exp.company + exp.role} className="exp-card" data-reveal>
-              <div className="exp-card__left">
-                <span className="exp-card__period">{exp.period}</span>
-                <span className="exp-card__location">{exp.location}</span>
-                <span
-                  className="exp-card__type"
-                  style={{ color: typeColors[exp.type] || '#8b5cf6', background: `${typeColors[exp.type] || '#8b5cf6'}14` }}
-                >
-                  {exp.type}
-                </span>
-              </div>
-              <div className="exp-card__right">
-                <div className="exp-card__header">
-                  <h3 className="exp-card__role">{exp.role}</h3>
-                  <span className="exp-card__company">{exp.company}</span>
-                </div>
-                <p className="exp-card__desc">{exp.desc}</p>
-                <div className="exp-card__highlights">
-                  {exp.highlights.map(h => (
-                    <span key={h} className="exp-card__highlight">
-                      <span className="exp-card__highlight-tick">✓</span>
-                      {h}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="xp__earlier">
+          <div className="xp__subhead" data-reveal>
+            <span className="mono">Earlier experience</span>
+            <span className="xp__subhead-line" aria-hidden="true" />
+          </div>
+
+          <div className="xp__list xp__list--earlier">
+            {earlierRoles.map((item, i) => (
+              <Role item={item} index={i} key={item.company + item.role} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

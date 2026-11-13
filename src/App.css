@@ -1,62 +1,35 @@
 .app {
   min-height: 100vh;
+  position: relative;
 }
 
 main {
-  padding-top: 72px;
+  position: relative;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 32px;
+/* Dark sections invert the page */
+.on-dark {
+  background: var(--ink);
+  color: var(--on-dark);
 }
 
-.section {
-  padding: 100px 0;
+.on-dark .section-head {
+  border-bottom-color: var(--on-dark-line);
 }
 
-.section-label {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 48px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.on-dark .section-head__index {
+  color: var(--accent-light);
 }
 
-.section-label::after {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 1px;
-  background: var(--border);
+.on-dark .section-head__label,
+.on-dark .section-head__note {
+  color: var(--on-dark-muted);
 }
 
-.section-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--text-primary);
-  margin-bottom: 20px;
+.on-dark .section-title {
+  color: var(--on-dark);
 }
 
-.divider {
-  width: 100%;
-  height: 1px;
-  background: var(--border);
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
-  }
-  .section {
-    padding: 72px 0;
-  }
+.on-dark .section-title em {
+  color: var(--accent-light);
 }

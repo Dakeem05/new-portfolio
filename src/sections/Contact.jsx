@@ -1,86 +1,90 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
+import useReveal from '../hooks/useReveal'
 import './Contact.css'
 
-export default function Contact() {
-  const ref = useRef(null)
+const CV_PATH = '/Edidiong-Samuel-DevRel-CV.pdf'
+const CV_NAME = 'Edidiong-Samuel-DevRel-CV.pdf'
 
-  useEffect(() => {
-    const items = ref.current?.querySelectorAll('[data-reveal]')
-    if (!items) return
-    const observer = new IntersectionObserver(
-      entries => entries.forEach((e, i) => {
-        if (e.isIntersecting) setTimeout(() => e.target.classList.add('revealed'), i * 80)
-      }),
-      { threshold: 0.1 }
-    )
-    items.forEach(item => observer.observe(item))
-    return () => observer.disconnect()
-  }, [])
+const facts = [
+  { label: 'Location', value: 'Uyo, Nigeria · Remote' },
+  { label: 'Timezone', value: 'WAT / UTC+1' },
+  { label: 'Availability', value: 'Full-time · Contract' },
+  { label: 'Focus', value: 'Developer Relations · Engineering' },
+]
+
+export default function Contact() {
+  const ref = useReveal()
 
   return (
-    <section className="section contact" id="contact" ref={ref}>
+    <section className="contact on-dark" id="contact" ref={ref}>
       <div className="container">
-        <div className="divider" data-reveal />
+        <div className="contact__meta" data-reveal>
+          <span className="mono contact__eyebrow">08 — Contact</span>
+          <span className="contact__availability">
+            <span className="contact__availability-dot" aria-hidden="true" />
+            Open to new roles
+          </span>
+        </div>
 
-        <div className="contact__inner">
-          <div className="contact__left" data-reveal>
-            <p className="section-label">Get in touch</p>
-            <h2 className="contact__heading">
-              Let's build<br />
-              <em>something</em><br />
-              together.
-            </h2>
-            <p className="contact__sub">
-              I'm actively looking for remote roles across fintech, Web3, AI, and beyond.
-              Open to full-time, contract, and project-based work.
-            </p>
-            <div className="contact__links">
-              <a href="mailto:edidiongsamuel14@gmail.com" className="contact__email">
-                edidiongsamuel14@gmail.com
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 12L12 2M12 2H4M12 2v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </a>
-            </div>
+        <h2 className="contact__title" data-reveal style={{ '--i': 1 }}>
+          Let's build something <em>worth using</em>.
+        </h2>
+
+        <p className="contact__sub" data-reveal style={{ '--i': 2 }}>
+          I'm open to Developer Relations, Developer Advocacy and full-stack engineering roles —
+          remote, international, full-time or contract. If you're building for developers, I'd like
+          to hear about it.
+        </p>
+
+        <div className="contact__main" data-reveal style={{ '--i': 3 }}>
+          <a href="mailto:edidiongsamuel14@gmail.com" className="contact__email">
+            <span>edidiongsamuel14@gmail.com</span>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M4 18 18 4M18 4H7M18 4v11" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+          </a>
+
+          <div className="contact__actions">
+            <a href={CV_PATH} download={CV_NAME} className="btn btn--primary">
+              Download CV
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                <path d="M6.5 1.5v7M3.6 5.9 6.5 8.8l2.9-2.9M2 11.5h9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/edidiong-samuel-ng"
+              target="_blank"
+              rel="noreferrer"
+              className="contact__link"
+            >
+              LinkedIn
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 10 10 2M10 2H4M10 2v6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+              </svg>
+            </a>
+
+            <a
+              href="https://github.com/dakeem05"
+              target="_blank"
+              rel="noreferrer"
+              className="contact__link"
+            >
+              GitHub
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 10 10 2M10 2H4M10 2v6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+              </svg>
+            </a>
           </div>
+        </div>
 
-          <div className="contact__right" data-reveal>
-            <div className="contact__card">
-              <div className="contact__card-header">
-                <span className="contact__card-title">Open to opportunities</span>
-                <span className="contact__badge">
-                  <span className="contact__badge-dot" />
-                  Available now
-                </span>
-              </div>
-
-              <div className="contact__details">
-                <div className="contact__detail">
-                  <span className="contact__detail-label">Location</span>
-                  <span className="contact__detail-value">Uyo, Nigeria (Remote)</span>
-                </div>
-                <div className="contact__detail">
-                  <span className="contact__detail-label">Timezone</span>
-                  <span className="contact__detail-value">WAT (UTC+1)</span>
-                </div>
-                <div className="contact__detail">
-                  <span className="contact__detail-label">Availability</span>
-                  <span className="contact__detail-value">Full-time / Contract</span>
-                </div>
-                <div className="contact__detail">
-                  <span className="contact__detail-label">Preferred work</span>
-                  <span className="contact__detail-value">Remote, international</span>
-                </div>
-              </div>
-
-              <a href="mailto:edidiongsamuel14@gmail.com" className="contact__cta">
-                Send me an email
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
+        <div className="contact__facts" data-reveal style={{ '--i': 4 }}>
+          {facts.map((f) => (
+            <div className="contact__fact" key={f.label}>
+              <span className="contact__fact-label">{f.label}</span>
+              <span className="contact__fact-value">{f.value}</span>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

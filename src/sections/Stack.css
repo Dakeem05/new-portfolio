@@ -1,77 +1,69 @@
-.stack__header {
-  padding: 60px 0 48px;
+.stack__list {
+  border-bottom: 1px solid var(--line);
 }
 
-.stack__grid {
+.stack__row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--border);
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
 }
 
-.stack__group {
-  background: var(--white);
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.stack__group-header {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-
-.stack__group-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.stack__group-label {
-  font-size: 11.5px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: var(--text-secondary);
+.stack__label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 3px;
+}
+
+.stack__row--primary .stack__label {
+  color: var(--accent);
 }
 
 .stack__items {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  align-items: baseline;
 }
 
 .stack__item {
-  font-size: 12.5px;
-  color: var(--text-secondary);
-  padding: 4px 12px;
-  border-radius: 100px;
-  border: 1px solid var(--border);
-  background: var(--off-white);
-  font-weight: 400;
-  transition: all var(--transition);
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+  transition: color var(--transition);
+  cursor: default;
 }
 
 .stack__item:hover {
-  border-color: var(--text-secondary);
-  color: var(--text-primary);
-  background: var(--white);
+  color: var(--accent);
 }
 
-@media (max-width: 900px) {
-  .stack__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.stack__item + .stack__item::before {
+  content: '·';
+  color: var(--line-strong);
+  margin: 0 11px;
 }
 
-@media (max-width: 600px) {
-  .stack__grid {
+@media (max-width: 800px) {
+  .stack__row {
     grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 20px 0;
+  }
+
+  .stack__label {
+    padding-top: 0;
+  }
+
+  .stack__item {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .stack__item + .stack__item::before {
+    margin: 0 9px;
   }
 }
