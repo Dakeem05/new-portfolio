@@ -6,7 +6,7 @@ const CV_PATH = '/Edidiong-Samuel-DevRel-CV.pdf'
 const CV_NAME = 'Edidiong-Samuel-DevRel-CV.pdf'
 
 const stats = [
-  { value: '900+', label: 'Community members' },
+  { value: '1000+', label: 'Community members' },
   { value: '9', label: 'Event partners' },
   { value: '50k+', label: 'Users served' },
   { value: '4+', label: 'Years engineering' },
@@ -35,7 +35,7 @@ export default function Hero() {
           <p className="hero__sub" data-reveal style={{ '--i': 2 }}>
             Developer Relations Engineer and full-stack engineer with four years shipping
             production software and two years leading GDGOC University of Uyo — from a
-            dormant chapter to 900+ members, nine partners, and a two-day flagship event.
+            dormant chapter to 1000+ members, nine partners, and a two-day flagship event.
           </p>
 
           <div className="hero__actions" data-reveal style={{ '--i': 3 }}>
@@ -72,7 +72,7 @@ export default function Hero() {
             />
             <span className="hero__portrait-tag">
               <span className="hero__portrait-tag-dot" aria-hidden="true" />
-              GDGOC Lead · 900+ members
+              GDGOC Lead · 1000+ members
             </span>
           </div>
           <figcaption className="hero__portrait-caption">
